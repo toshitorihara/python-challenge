@@ -7,8 +7,7 @@ To create a Python script that analyzes the records to calculate each of the fol
 * Calculate the changes in "Profit/Losses" over the entire period, then find the average of those changes
 * The greatest increase in profits (date and amount) over the entire period
 * The greatest decrease in profits (date and amount) over the entire period
-<br> The final script should both print the analysis to the terminal and export a text file with the results.
-<p>
+<p> The final script should both print the analysis to the terminal and export a text file with the results.
 
 ## PyPoll
 To create a Python script that analyzes the votes and calculates each of the following from election_data.csv:
@@ -17,5 +16,4 @@ To create a Python script that analyzes the votes and calculates each of the fol
 * The percentage of votes each candidate won
 * The total number of votes each candidate won
 * The winner of the election based on popular vote.
-<br> The final script should both print the analysis to the terminal and export a text file with the results.
-<p>
+<p> The final script should both print the analysis to the terminal and export a text file with the results.
