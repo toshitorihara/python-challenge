@@ -1,67 +1,50 @@
 import os
 import csv
-
-csvpath = os.path.join("Resources", "election_data.csv")
+csvpath = os.path.join('election_data.csv')
 total_votes = 0
-election_candidates = 0
-election_winner = 0
-
-with open(csvpath) as csvfile:
+candidates_unique = []
+candidate_votes = []
+with open(csvpath, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
-    header = next(csvreader)
+    csv_header = next(csvreader)
+    for row in csvreader:
+        total_votes += 1
+        candidate_in = (row[2])
+        if candidate_in in candidates_unique:
+            candidate_index = candidates_unique.index(candidate_in)
+            candidate_votes[candidate_index] = candidate_votes[candidate_index] + 1
+        else:
+            candidates_unique.append(candidate_in)
+            candidate_votes.append(1)
+pct = []
+max_votes = candidate_votes[0]
+max_index = 0
+for x in range(len(candidates_unique)):
+    vote_pct = round(candidate_votes[x]/total_votes*100, 2)
+    pct.append(vote_pct)
+    if candidate_votes[x] > max_votes:
+        max_votes = candidate_votes[x]
+        max_index = x
+election_winner = candidates_unique[max_index] 
 
-    for row in csvreader:       
-# election_candidate = ["Khan", "Correy", "Li", "O'Tooley"]
-# vote_count = 0
-# percentage_vote = 0
-# election_winner = 0
+print('Election Results')
+print('-------------------------')
+print(f'Total Votes: {total_votes}')
+print('-------------------------')
+for x in range(len(candidates_unique)):
+    print(f'{candidates_unique[x]} : {pct[x]:.3f}% ({candidate_votes[x]})')
+print('-------------------------')
+print(f'Winner: {election_winner}')
+print('-------------------------')
 
-        voter_id = [1:1048576]
-        county = ["Marsh", "Bamoo", "Trandee", "Raffa"]
-        candidates = ["Khan", "Correy", "Li", "O'Tooley"]
-
-# Zip all three lists together into tuples
-roster = zip.count(voter_id, county, candidates)
-zip.count(candidates[0])
-
-# Lists to store data
-voter_id = []
-county = []
-candidates = []
-        # Add title
-        candidates.counter(row[2])
-        if candidates = Khan:
-            
-multiline_str = (
-    "Election Results\n"
-    "-------------------------\n"
-    f"Total Votes: {total_votes} \n"
-    "-------------------------\n"
-    "Khan: 63.000% (2218231)\n"
-    "Correy: 20.000% (704200)\n"
-    "Li: 14.000% (492940)\n"
-    "O'Tooley: 3.000% (105630)\n"
-    "-------------------------\n"
-    f"Winner: {election_winner}\n"
-    "-------------------------\n"
-)
-
-print(multiline_str)
-
-output_text = os.path.join("analysis", "election_results.txt")
-file1 = open(output_text, "w")
-file1.write(multiline_str)
-file1.close()
-
-# Election Results
-# -------------------------
-# Total Votes: 3521001
-# -------------------------
-# Khan: 63.000% (2218231)
-# Correy: 20.000% (704200)
-# Li: 14.000% (492940)
-# O'Tooley: 3.000% (105630)
-# -------------------------
-# Winner: Khan
-# -------------------------
-
+output_file = os.path.join("election_results.txt")
+with open(output_file, "w", newline="") as datafile:
+    datafile.write('Election Results\n')
+    datafile.write('-------------------------\n')
+    datafile.write(f'Total Votes: {total_votes}\n')
+    datafile.write('-------------------------\n')
+    for x in range(len(candidates_unique)):
+        datafile.write(f'{candidates_unique[x]} : {pct[x]:.3f}% ({candidate_votes[x]})\n')
+    datafile.write('-------------------------\n')
+    datafile.write(f'Winner: {election_winner}\n')
+    datafile.write('-------------------------\n')
