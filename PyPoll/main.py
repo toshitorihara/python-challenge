@@ -1,9 +1,11 @@
 import os
 import csv
+
 csvpath = os.path.join('election_data.csv')
 total_votes = 0
 candidates_unique = []
 candidate_votes = []
+
 with open(csvpath, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     csv_header = next(csvreader)
@@ -16,12 +18,14 @@ with open(csvpath, newline="") as csvfile:
         else:
             candidates_unique.append(candidate_in)
             candidate_votes.append(1)
-pct = []
+
+percentage = []
 max_votes = candidate_votes[0]
 max_index = 0
+
 for x in range(len(candidates_unique)):
-    vote_pct = round(candidate_votes[x]/total_votes*100, 2)
-    pct.append(vote_pct)
+    vote_percentage = round(candidate_votes[x]/total_votes*100, 2)
+    percentage.append(vote_percentage)
     if candidate_votes[x] > max_votes:
         max_votes = candidate_votes[x]
         max_index = x
@@ -32,7 +36,7 @@ print('-------------------------')
 print(f'Total Votes: {total_votes}')
 print('-------------------------')
 for x in range(len(candidates_unique)):
-    print(f'{candidates_unique[x]} : {pct[x]:.3f}% ({candidate_votes[x]})')
+    print(f'{candidates_unique[x]} : {percentage[x]:.3f}% ({candidate_votes[x]})')
 print('-------------------------')
 print(f'Winner: {election_winner}')
 print('-------------------------')
@@ -44,7 +48,7 @@ with open(output_file, "w", newline="") as datafile:
     datafile.write(f'Total Votes: {total_votes}\n')
     datafile.write('-------------------------\n')
     for x in range(len(candidates_unique)):
-        datafile.write(f'{candidates_unique[x]} : {pct[x]:.3f}% ({candidate_votes[x]})\n')
+        datafile.write(f'{candidates_unique[x]} : {percentage[x]:.3f}% ({candidate_votes[x]})\n')
     datafile.write('-------------------------\n')
     datafile.write(f'Winner: {election_winner}\n')
     datafile.write('-------------------------\n')
