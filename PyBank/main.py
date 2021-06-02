@@ -9,14 +9,10 @@ with open(csvpath) as csvfile:
     revenue = []
     date = []
     rev_change = []
-    #total = 0
-    #total_months = 0
 
     for row in csvreader:
         revenue.append(float(row[1]))
         date.append(row[0])
-        #total = total + int(row[1])
-        #total_months+= 1
 
     for i in range(1,len(revenue)):
         rev_change.append(revenue[i] - revenue[i-1])   
