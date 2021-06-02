@@ -35,7 +35,7 @@ f"Average Change: ${avg_rev_change}\n"
 f"Greatest Increase in Profits: {max_rev_change_date} (${max_rev_change})\n"
 f"Greatest Decrease in Profits: {min_rev_change_date} (${min_rev_change})\n"  
 )
-print(multiline_str)
+print(multiline_str, end="")
 
 output_text = os.path.join("analysis", "financial_analysis.txt")
 file1 = open(output_text, "w")

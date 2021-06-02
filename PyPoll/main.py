@@ -1,7 +1,7 @@
 import os
 import csv
 
-csvpath = os.path.join('election_data.csv')
+csvpath = os.path.join("Resources", "election_data.csv")
 total_votes = 0
 candidates_unique = []
 candidate_votes = []
@@ -41,7 +41,7 @@ print('-------------------------')
 print(f'Winner: {election_winner}')
 print('-------------------------')
 
-output_file = os.path.join("election_results.txt")
+output_file = os.path.join("analysis", "election_results.txt")
 with open(output_file, "w", newline="") as datafile:
     datafile.write('Election Results\n')
     datafile.write('-------------------------\n')
