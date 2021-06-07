@@ -1,6 +1,4 @@
-# python-challenge
-
-## <strong style="color: blue;">PyBank</strong>
+# PyBank
 To create a Python script that analyzes the records to calculate each of the following from budget_data.csv. <br>
 * The total number of months included in the dataset
 * The net total amount of "Profit/Losses" over the entire period
@@ -9,7 +7,7 @@ To create a Python script that analyzes the records to calculate each of the fol
 * The greatest decrease in profits (date and amount) over the entire period
 <p> The final script should both print the analysis to the terminal and export a text file with the results.
 
-## <strong style="color: red;">PyPoll</strong>
+# PyPoll
 To create a Python script that analyzes the votes and calculates each of the following from election_data.csv:
 * The total number of votes cast
 * A complete list of candidates who received votes
